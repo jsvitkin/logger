@@ -17,7 +17,7 @@
     "outDir": "dist",
     "rootDirs": [
       "src",
-      "tests"
+      "tests/"
     ],
     "moduleResolution": "node",
     "allowJs": true,
