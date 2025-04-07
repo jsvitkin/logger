@@ -2,14 +2,23 @@
   "compilerOptions": {
     "target": "es2022",
     "module": "ESNext",
-    "lib": ["es2022", "esnext"],
-    "types": ["node", "jest"],
+    "lib": [
+      "es2022",
+      "esnext"
+    ],
+    "types": [
+      "node",
+      "jest"
+    ],
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "dist",
-    "rootDir": ".",
+    "rootDirs": [
+      "src",
+      "tests"
+    ],
     "moduleResolution": "node",
     "allowJs": true,
     "checkJs": true,
@@ -19,12 +28,18 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "declaration": true,
-    "declarationDir": "dist",
+    "declarationDir": "dist"
   },
   "ts-node": {
     "esm": true,
     "experimentalSpecifiers": true
   },
-  "include": ["src/**/*", "tests/**/*", "configs/**/*"],
-  "exclude": ["node_modules"]
+  "include": [
+    "src/**/*",
+    "tests/**/*",
+    "configs/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

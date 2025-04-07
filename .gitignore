@@ -36,3 +36,7 @@ out-tsc/
 .vscode/*.tmp
 .vscode/test/*
 .vscode/coverage/*
+
+# Test Outputs
+logger*.tgz
+package/
