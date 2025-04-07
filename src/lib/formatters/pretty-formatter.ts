@@ -26,9 +26,15 @@ export class PrettyFormatter implements ILogFormatter {
     };
   }
 
+  /**
+   * Format a log entry as a string.
+   *
+   * @param entry The log entry to format.
+   * @returns A string representation of the log entry.
+   */
   format(entry: LogEntry): string {
-    const coloredLevel = `${this.levelColors[entry.level]}${entry.level.toUpperCase()}${this.colors.reset}`;
-    return `[${entry.timestamp}] ${coloredLevel}  [${entry.context.service}:${entry.context.operation}] ${entry.message} | ${this.formatContextData(entry.context)}`;
+    const coloredLevel = `${ this.levelColors[entry.level] }${ entry.level.toUpperCase() }${ this.colors.reset }`;
+    return `[${ entry.timestamp }] ${ coloredLevel }  [${ entry.context.service }:${ entry.context.operation }] ${ entry.message } | ${ this.formatContextData(entry.context) }`;
   }
 
   private formatContextData(context: LogContext): string {
@@ -37,25 +43,25 @@ export class PrettyFormatter implements ILogFormatter {
     }
 
     if (context.error) {
-      return `error="${context.error.name}: ${context.error.message}" ${context.error.stack ? `\n ${context.error.stack}` : ''}`;
+      return `error="${ context.error.name }: ${ context.error.message }" ${ context.error.stack ? `\n ${ context.error.stack }` : '' }`;
     }
 
     if (context.data) {
       return Object.entries(context.data)
-        .map(([key, value]) => `${key}=${this.formatValue(value)}`)
+        .map(([key, value]) => `${ key }=${ this.formatValue(value) }`)
         .join(' ');
     }
     return '';
   }
 
   private formatValue(value: unknown): string {
-    if (typeof value === 'string') return `"${value}"`;
-    if (Array.isArray(value)) return `[${value.map((v) => this.formatValue(v))}]`;
+    if (typeof value === 'string') return `"${ value }"`;
+    if (Array.isArray(value)) return `[${ value.map((v) => this.formatValue(v)) }]`;
     if (value instanceof RegExp) return value.toString();
     if (typeof value === 'object' && value !== null) {
-      return `{${Object.entries(value)
-        .map(([k, v]) => `${k}:${this.formatValue(v)}`)
-        .join(',')}}`;
+      return `{${ Object.entries(value)
+        .map(([k, v]) => `${ k }:${ this.formatValue(v) }`)
+        .join(',') }}`;
     }
 
     return String(value);
