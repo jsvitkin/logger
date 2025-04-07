@@ -1,0 +1,38 @@
+# Node.js and npm ignores
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnp
+.pnp.js
+
+# TypeScript and JavaScript ignores
+tmp/
+out-tsc/
+
+# IDE ignores
+.vscode/
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries
+.idea/vcs.xml
+.idea/jsLibraryMappings.xml
+.idea/modules.xml
+.idea/*.iml
+.idea/artifacts
+.idea/compiler.xml
+.idea/encodings.xml
+.idea/misc.xml
+.idea/modules
+.idea/scopes
+.idea/validation.xml
+.idea/copyright/profiles_settings.xml
+.idea/inspectionProfiles
+.idea/codeStyles
+.idea/codeInsightSettings.xml
+
+# Other ignores
+.vscode/*.log
+.vscode/*.tmp
+.vscode/test/*
+.vscode/coverage/*
