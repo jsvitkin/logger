@@ -3,29 +3,57 @@ export class Logger {
     transports;
     defaultContext;
     minLevel;
+    /**
+     * Constructs a new Logger with the given configuration.
+     * @param config The configuration options for this logger.
+     * The following options are available:
+     * - `transports`: An array of {@link ILogTransport} objects to use for writing log entries.
+     * - `defaultContext`: An object of default context to include with every log entry.
+     * - `minLevel`: The minimum log level to allow writing to the log. Defaults to `LogLevel.INFO`.
+     */
     constructor(config) {
         this.transports = config.transports;
         this.defaultContext = config.defaultContext || {};
         this.minLevel = config.minLevel || LogLevel.INFO;
     }
+    /**
+     * Logs an error message and optional context with the error log level.
+     * @param message The error message to log.
+     * @param context Optional context to include in the log entry.
+     */
     error(message, context) {
         if (this.shouldLog(LogLevel.ERROR)) {
             const entry = this.createLogEntry(LogLevel.ERROR, message, context);
             this.transports.forEach((t) => t.log(entry));
         }
     }
+    /**
+     * Logs a warning message and optional context with the warn log level.
+     * @param message The warning message to log.
+     * @param context Optional context to include in the log entry.
+     */
     warn(message, context) {
         if (this.shouldLog(LogLevel.WARN)) {
             const entry = this.createLogEntry(LogLevel.WARN, message, context);
             this.transports.forEach((t) => t.log(entry));
         }
     }
+    /**
+     * Logs an info message and optional context with the info log level.
+     * @param message The info message to log.
+     * @param context Optional context to include in the log entry.
+     */
     info(message, context) {
         if (this.shouldLog(LogLevel.INFO)) {
             const entry = this.createLogEntry(LogLevel.INFO, message, context);
             this.transports.forEach((t) => t.log(entry));
         }
     }
+    /**
+     * Logs a debug message and optional context with the debug log level.
+     * @param message The debug message to log.
+     * @param context Optional context to include in the log entry.
+     */
     debug(message, context) {
         if (this.shouldLog(LogLevel.DEBUG)) {
             const entry = this.createLogEntry(LogLevel.DEBUG, message, context);

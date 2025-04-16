@@ -22,6 +22,12 @@ export class PrettyFormatter {
             [LogLevel.WARN]: this.colors.yellow,
         };
     }
+    /**
+     * Format a log entry as a string.
+     *
+     * @param entry The log entry to format.
+     * @returns A string representation of the log entry.
+     */
     format(entry) {
         const coloredLevel = `${this.levelColors[entry.level]}${entry.level.toUpperCase()}${this.colors.reset}`;
         return `[${entry.timestamp}] ${coloredLevel}  [${entry.context.service}:${entry.context.operation}] ${entry.message} | ${this.formatContextData(entry.context)}`;

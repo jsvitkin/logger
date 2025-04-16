@@ -7,6 +7,11 @@ export class LoggerFactory {
     static defaultConfig;
     static initialized = false;
     static configs;
+    /**
+     * Initialize the logger factory with the given config.
+     * This method should be called once before any loggers are created.
+     * @param configs - A mapping of service names to their respective logger configurations.
+     */
     static initialize(configs) {
         this.defaultConfig = {
             transports: [new ConsoleTransport(new PrettyFormatter())],
@@ -15,6 +20,14 @@ export class LoggerFactory {
         this.configs = configs;
         this.initialized = true;
     }
+    /**
+     * Retrieve a logger instance for the given service name.
+     * If the logger has already been created, the cached instance is returned.
+     * Otherwise, a new logger is created based on the default config and any
+     * service-specific config provided during initialization.
+     * @param serviceName - The name of the service to log for.
+     * @returns A Logger instance for the given service name.
+     */
     static get(serviceName) {
         if (!this.initialized) {
             throw new Error('LoggerFactory must be initialized before use.');

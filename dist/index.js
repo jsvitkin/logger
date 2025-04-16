@@ -4,3 +4,4 @@ export { JsonFormatter } from './lib/formatters/json-formatter';
 export { ConsoleTransport } from './lib/transport/console-transport';
 export { SentryTransport } from './lib/transport/sentry-transport';
 export { Logger } from './lib/logger';
+export { LogLevel } from './lib/types';
